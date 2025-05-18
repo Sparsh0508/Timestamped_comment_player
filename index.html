@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Persistent Interactive Video Player with Comments</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" role="main">
+    <div class="video-container">
+      <label for="videoFileInput" id="videoFileLabel" tabindex="0" role="button" aria-label="Select video file to play" class="custom-file-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="17 8 12 3 7 8" />
+          <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+        <span>Choose Video File</span>
+      </label>
+      <input type="file" id="videoFileInput" accept="video/*" aria-describedby="videoFileLabel" />
+
+      <video id="video" controls preload="metadata" crossorigin="anonymous" aria-label="Video player">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+        Sorry, your browser does not support the video tag.
+      </video>
+    </div>
+
+    <section class="comments-section" aria-label="Video Comments">
+      <div class="comments-header">
+        <span>Comments</span>
+        <input type="search" id="searchInput" class="search-input" placeholder="Search comments…" aria-label="Search comments" />
+      </div>
+
+      <div id="commentsList" class="comments-list" role="list" aria-live="polite" aria-relevant="additions"></div>
+
+      <form id="addCommentForm" class="add-comment" aria-label="Add new comment">
+        <input type="text" id="commentInput" placeholder="Add comment at current time…" autocomplete="off" required />
+        <button type="submit" id="addBtn" disabled>Add</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
